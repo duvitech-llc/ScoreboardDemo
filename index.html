@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>HTML5 SCADA Live Demo</title>
+  <style type="text/css">
+    body {
+      margin: 0px;
+      padding: 0px;
+    }
+    .sideBackground
+    {
+      background-position: center top;
+      background-repeat: repeat-x;
+      position: relative;
+    }
+    .sideBackground.blue
+    {
+      background-image: url('images/side_blue.png');
+    }
+    .sideBackground.green
+    {
+      background-image: url('images/side_green.png');
+    }
+    .centerBackground
+    {
+      width: 996px;
+      margin: 0px auto;
+      background-repeat: no-repeat;
+      background-position: center top;
+      overflow: hidden;
+    }
+    .centerBackground.blue
+    {
+      background-image: url('images/center_blue.png');
+    }
+    .centerBackground.green
+    {
+      background-image: url('images/center_green.png');
+    }
+    .topStripe {
+      height: 24px;
+      background-color: #0063B8;
+      width: 960px;
+      margin: 0px auto;
+      font-family: "Segoe UI Symbol", Monaco, sans-serif, monospace;
+      font-size: 18px;
+      padding: 18px;
+      color: white;
+      font-weight: 600;
+      background-image: url('images/top_logo.png');
+      background-position: 727px 14px;
+      background-repeat: no-repeat;
+    }
+    .scoreboard
+    {
+      margin: 30px auto;
+      text-align: center;
+      position: relative;
+      height: 627px;
+    }
+    .button-line
+    {
+      text-align:center;
+      margin: 30px auto;
+    }
+    .trialButton
+    {
+      background-image: url('images/bt_trial.png');
+    }
+    .button
+    {
+      display: inline-block;
+      height: 45px;
+      width: 250px;
+    }
+    .button + .button
+    {
+      margin-left: 38px;
+    }
+    .button:hover
+    {
+      background-position: 0px -45px;
+    }
+    .button:active
+    {
+      background-position: 0px -90px;
+    }
+    .demoButton
+    {
+      background-image: url('images/bt_demo.png');
+    }
+    
+    .hidden {
+      display: none;
+    }
+    .bottomStripe
+    {
+      height: 67px;
+      background-color: #718CA3;
+      color: white;
+      font-family: "Segoe UI", Monaco, sans-serif, monospace;
+      font-size: 10px;
+      padding-top: 12px;
+      text-align: center;
+      min-width: 996px;
+    }
+    .bottomStripe a
+    {
+      text-decoration: underline;
+      color: white;
+    }
+    #backgrnd
+    {
+      overflow: hidden;
+    }
+    #root
+    {
+      text-align: center;
+    }
+    #userControls
+    {
+      margin: 0 auto;
+      text-align: left;
+    }
+    #userControls input[type=button]
+    {
+      width: 100%;
+    }
+    .rectangle
+    {
+      width: 559px;
+      height: 138px;
+      margin: 0 auto;
+      background-image: url('images/blackrect.png');
+    }
+    .seasonEasterEgg.blue
+    {
+      height: 76px;
+      width: 132px;
+      margin: 76px auto 0px;
+    }
+    .seasonEasterEgg.green
+    {
+      height: 102px;
+      width: 102px;
+      margin: 46px auto 0px;
+    }
+    </style>
+
+    <script type="text/javascript" async="" src="http://stats.g.doubleclick.net/dc.js"></script>
+    <script src="script/mscorlib.js"></script>
+    <script src="script/PerfectWidgets.js"></script>
+    <script src="script/widget.js"></script>
+    <script src="script/app.js"></script>
+
+</head>
+<body>
+  <div class="sideBackground season blue">
+    <div class="centerBackground season blue">
+      <div class="topStripe">
+        HTML GAUGES TO VISUALIZE YOUR DATA ONLINE
+      </div>
+      <div id="backgrnd">
+        <div class="scoreboard">
+          <!--widget will be in the div below-->
+          <div id="root">
+          </div>
+          <div class="rectangle">
+            <br/>
+            <table id="userControls">
+              <tr>
+                <td>         
+                  <input value="Home" type="text"></input>
+                </td>
+                <td>         
+                  <input value="Guest" type="text"></input>
+                </td>
+              </tr>
+              <tr>
+                <td>         
+                  <input value="Add penalty" type="button" onclick="generateHomePenalty();"></input>
+                </td>
+                <td>    
+                  <input value="Add penalty" type="button" onclick="generateGuestPenalty();"></input>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input value="Score the goal" type="button" onclick="scoreGoalHome();"></input>
+                </td>
+                <td>
+                  <input value="Score the goal" type="button" onclick="scoreGoalGuest();"></input>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input value="Make a shot" type="button" onclick="shotHome();"></input>
+                </td>
+                <td>
+                  <input value="Make a shot" type="button" onclick="shotGuest();"></input>
+                </td>
+              </tr>
+            </table>
+            <div class="seasonEasterEgg season blue" onClick="changeSeason();">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="button-line">
+        <a href="http://perfectwidgets.com/Order/Download" class="trialButton button"></a>
+        <a href="downloads/ScoreboardSample.zip" class="demoButton button"></a>
+      </div>
+    </div>
+    <div class="bottomStripe">
+      © 2002 - 2015 <a target="_blank" href="http://www.perpetuumsoft.com/">Perpetuum Software LLC</a> The company of <a target="_blank" href="http://www.enterra-inc.com/">Enterra Inc</a>.
+      <a target="_blank" href="http://www.perpetuumsoft.com/TermsOfUse.aspx?lang=en">Terms of Use</a>
+      <a target="_blank" href="http://www.perpetuumsoft.com/Privacy.aspx?lang=en">Privacy Policy</a>
+    </div>
+  </div>
+</body>
+</html>
